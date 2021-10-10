@@ -12,16 +12,16 @@ var pontuacao;
 var estado = 'INICIO';
 
 function preload(){
+  som = loadSound("spooky.wav");
   imagemDaTorre = loadImage("tower.png");
   imagemDaPorta = loadImage("door.png");
   imagemDoEscalador = loadImage("climber.png");
   imagemDoFantasma = loadImage("ghost-standing.png");
-  som = loadSound("spooky.wav");
 }
 
 function setup(){
+  
   createCanvas(600,600);    
-  som.loop();
   pontuacao = 0;
 
   torre = createSprite(300,300);
@@ -35,7 +35,6 @@ function setup(){
   fantasma = createSprite(300, 300, 50, 50);
   fantasma.scale = 0.3;
   fantasma.addImage("ghost", imagemDoFantasma);
-
 }
 
 
@@ -46,6 +45,7 @@ function draw(){
   text("Pontuação: "+pontuacao, 500, 50);
   if(estado == 'INICIO' && keyDown('space')){
     estado = 'JOGANDO';
+    som.play();
   }
   if (estado == 'INICIO'){
     torre.velocityY = 0;
